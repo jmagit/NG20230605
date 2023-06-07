@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MyCoreModule } from 'src/lib/my-core';
+import { MainModule } from '../main';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule, MyCoreModule, MainModule,
   ]
 })
 export class SecurityModule { }
