@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { MainModule } from './main';
 import { SecurityModule } from './security';
-import { LoggerService, MyCoreModule } from 'src/lib/my-core';
+import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoggerService, MyCoreModule } from 'src/lib/my-core';
   ],
   providers: [
     LoggerService,
+    { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
 
   ],
   bootstrap: [AppComponent]
