@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
   ],
   providers: [
     LoggerService,
+    // { provide: LoggerService, useClass: LoggerService},
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
 
   ],

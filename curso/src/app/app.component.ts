@@ -8,6 +8,7 @@ import { LoggerService } from 'src/lib/my-core';
 })
 export class AppComponent {
   title = 'Hola mundo';
+
   constructor(log: LoggerService) {
     log.error('Es un error');
     log.warn('Es un warn');
