@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { MainModule } from './main';
 import { SecurityModule } from './security';
-import { MyCoreModule } from 'src/lib/my-core';
+import { LoggerService, MyCoreModule } from 'src/lib/my-core';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,10 @@ import { MyCoreModule } from 'src/lib/my-core';
     MainModule, SecurityModule, MyCoreModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    LoggerService,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
