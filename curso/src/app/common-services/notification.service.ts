@@ -19,7 +19,7 @@ export class NotificationService implements OnDestroy {
   private notificacion$ = new Subject<Notification>();
 
   constructor(private out: LoggerService) { }
-  public get Listado(): Array<Notification> { return Object.assign([], this.listado); }
+  public get Listado(): Array<Notification> { return Object.assign([], this.listado);  } //return [...this.listado]
   public get HayNotificaciones(): boolean { return this.listado.length > 0; }
   public get Notificacion() { return this.notificacion$; }
 
