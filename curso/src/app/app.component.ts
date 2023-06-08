@@ -7,8 +7,7 @@ import { NotificationService, NotificationType } from './common-services';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Hola mundo';
+export class AppComponent /* implements OnInit */ {
 
   // constructor(log: LoggerService) {
   //   log.error('Es un error');
@@ -17,8 +16,8 @@ export class AppComponent implements OnInit {
   //   log.log('Es un log');
   // }
 
-  constructor(private notify: NotificationService) {}
-  ngOnInit(): void {
-    this.notify.add('Aplicación arrancada', NotificationType.info);
-  }
+  // constructor(private notify: NotificationService) {}
+  // ngOnInit(): void {
+  //   this.notify.add('Aplicación arrancada', NotificationType.info);
+  // }
 }
