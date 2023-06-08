@@ -2,23 +2,17 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationModalComponent } from './notification-modal/notification-modal.component';
-import { HomeComponent } from './home/home.component';
-import { AjaxWaitComponent } from './ajax-wait';
-import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SecurityModule } from '../security';
 
 
 @NgModule({
   declarations: [
-    NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, HeaderComponent, PageNotFoundComponent,
+    NotificationComponent, NotificationModalComponent
   ],
   exports: [
-    NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, HeaderComponent, PageNotFoundComponent,
+    NotificationComponent, NotificationModalComponent
   ],
   imports: [
-    CommonModule, SecurityModule, RouterModule.forChild([]),
+    CommonModule,
   ]
 })
 export class MainModule {

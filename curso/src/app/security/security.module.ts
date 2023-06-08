@@ -8,7 +8,7 @@ import { MainModule } from '../main';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule, MyCoreModule, MainModule,
+    CommonModule, MyCoreModule,
   ]
 })
 export class SecurityModule { }
