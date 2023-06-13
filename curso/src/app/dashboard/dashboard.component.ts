@@ -10,8 +10,8 @@ import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.
 })
 export class DashboardComponent {
   menu = [
-    { texto: 'inicio', icono: '', componente: HomeComponent},
     { texto: 'demos', icono: '', componente: DemosComponent},
+    { texto: 'inicio', icono: '', componente: HomeComponent},
     { texto: 'gráfico', icono: '', componente: GraficoSvgComponent},
   ]
   actual: any = this.menu[0].componente
