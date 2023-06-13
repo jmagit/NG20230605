@@ -1,3 +1,44 @@
+<div class="container theme-dark">
+  <div class="row">
+    <div class="col">
+      <calculadora [SeparadorDecimal]="','" (updated)="ponResultado('IZQ', $event)"></calculadora>
+    </div>
+    <table class="col table table-striped">
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>Calc</th>
+          <th>Resultado</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="3">Idioma: <select [(ngModel)]="idioma">
+              <option *ngFor="let i of idiomas" [value]="i.codigo">{{i.region}}</option>
+            </select>
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr *ngFor="let r of calculos | slice:-10">
+          <td class="text-right">{{r.pos}}</td>
+          <td>{{r.origen}}</td>
+          <td class="text-right">{{r.valor | number:'1.0-8':idioma }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col">
+      <calculadora [init]="valCalculadora" (updated)="ponResultado('DER', $event)"></calculadora>
+    </div>
+  </div>
+  <div class="row">
+    <input type="number" [(ngModel)]="valCalculadora">
+  </div>
+</div>
+<app-card header="Cabecera de la tarjeta" >
+  <span titulo>Título</span>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolorum cupiditate itaque eaque excepturi similique non temporibus. Atque ad velit in, eligendi error veritatis corporis assumenda, illo fugit minus ipsa.
+</app-card>
 <h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
 <p>
   <input type="text" [(ngModel)]="Nombre" >

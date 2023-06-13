@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MyCoreModule } from 'src/lib/my-core';
-import { MainModule } from '../main';
+import { LoginComponent, LoginFormComponent } from './login/login.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
+import { Routes, RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+const routes: Routes = [
+  { path: 'registro', component: RegisterUserComponent },
+];
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule, MyCoreModule,
-  ]
+    CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(routes),
+  ],
+  declarations: [ LoginComponent, RegisterUserComponent, LoginFormComponent ],
+  exports: [ LoginComponent, RegisterUserComponent ],
 })
 export class SecurityModule { }
