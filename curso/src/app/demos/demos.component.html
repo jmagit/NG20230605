@@ -1,4 +1,4 @@
-<h1>Hola {{Nombre}}</h1>
+<h1>Hola {{Nombre | uppercase}}</h1>
 <p>
   <input type="text" [(ngModel)]="Nombre" >
   <input type="button" value="saluda" (click)="saluda()">
@@ -10,8 +10,8 @@
   <input type="button" value="Info" (click)="vm.add('Solo una notificación informativa',  vm.NotificationType.info)">
   <input type="button" value="Log" (click)="vm.add('Para trazar con notificaciones',  vm.NotificationType.log)">
 </p>
-<output [textContent]="resultado">Esto se pierde</output>
-<output [innerHTML]="resultado">Esto se pierde</output>
+<p [textContent]="resultado">Esto se pierde</p>
+<p [innerHTML]="resultado">Esto se pierde</p>
 <p [hidden]="!visible">Ahora me ves</p>
 <p *ngIf="visible">Ahora existo</p>
 <p [ngClass]="estetica">
@@ -19,12 +19,12 @@
 </p>
 <p [class.semivisible]="!visible">Ahora me ves bien</p>
 <p>
-  Calcula: 2 + 2 = {{2 + 2}} = {{calcula(2, 2)}}
+  Calcula: 2 + 2 = {{2 + 2}} = {{calcula(2, 2) | currency:'EUR':'symbol':'1.2-2'}}
 </p>
 <ul>
-  <li *ngFor="let item of listado; let indice=index; let fondo=odd;"
+  <li *ngFor="let item of listado | slice:-5; let indice=index; let fondo=odd;"
       [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
-    {{item.nombre}} ({{item.id}}) [Elemento {{indice + 1}} de {{listado.length}}]
+    {{item.nombre | titlecase}} ({{item.id}}) [Elemento {{indice + 1}} de {{listado.length}}]
   </li>
 </ul>
 <p>
@@ -36,3 +36,4 @@
   <input type="text" value="Tabarnia" #txtProvincia >
   <input type="button" value="add" (click)="add(txtProvincia.value)">
 </p>
+{{ listado | json }}
