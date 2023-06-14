@@ -39,6 +39,10 @@
   <span titulo>Título</span>
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolorum cupiditate itaque eaque excepturi similique non temporibus. Atque ad velit in, eligendi error veritatis corporis assumenda, illo fugit minus ipsa.
 </app-card>
+<app-card [header]="Nombre" >
+  <h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
+  <my-sizer [(size)]="fontSize" />
+</app-card>
 <h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
 <p>
   <input type="text" [(ngModel)]="Nombre" >
