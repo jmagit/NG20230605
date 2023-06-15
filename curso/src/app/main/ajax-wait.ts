@@ -34,8 +34,8 @@ export class AjaxWaitInterceptor implements HttpInterceptor {
   template: `
   <div [hidden]="Oculto">
     <div class="ajax-wait"></div>
-    <!--<img src="assets/loading.gif">-->
-    <div class="loader"></div>
+    <img src="assets/loading.gif">
+    <!-- <div class="loader"></div> -->
   </div>`,
   styles: [`
     .ajax-wait {
