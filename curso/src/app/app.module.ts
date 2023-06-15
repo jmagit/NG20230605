@@ -21,6 +21,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { CommonComponentModule } from './common-component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ContactosModule } from './contactos';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
-    AppRoutingModule, GraficoSvgComponent,
+    AppRoutingModule, GraficoSvgComponent, ContactosModule,
   ],
   providers: [
     LoggerService,
