@@ -16,26 +16,25 @@ import { environment } from 'src/environments/environment';
 import { DemosComponent } from './demos/demos.component';
 import { CommonServicesModule } from './common-services';
 import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+// import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { CommonComponentModule } from './common-component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContactosModule } from './contactos';
-import { LibrosModule } from './libros';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemosComponent,
-    DashboardComponent,
+    // DashboardComponent,
     CalculadoraComponent,
     FormularioComponent,
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
-    AppRoutingModule, GraficoSvgComponent, ContactosModule, LibrosModule,
+    AppRoutingModule, GraficoSvgComponent, ContactosModule,
   ],
   providers: [
     LoggerService,
