@@ -6,7 +6,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
 // import { LibrosComponent } from './libros';
 import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
-import { AuthCanActivateFn, AuthWithRedirectCanActivate, InRoleCanActivateChildFn, LoginFormComponent, RegisterUserComponent } from './security';
+import { AuthCanActivateFn, AuthWithRedirectCanActivate, InRoleCanActivateChild, InRoleCanActivateChildFn, LoginFormComponent, RegisterUserComponent } from './security';
 
 export function svgFiles(url: UrlSegment[]) {
   return url.length === 1 && url[0].path.endsWith('.svg') ? ({ consumed: url }) : null;
@@ -33,7 +33,9 @@ const routes: Routes = [
   //   ], canActivate: [ AuthWithRedirectCanActivate('/login')], canActivateChild: [InRoleCanActivateChildFn], data: { roles: ['Empleados']}
   // },
   {
-    path: 'libros', loadChildren: () => import('./libros/modulo.module').then(mod => mod.LibrosModule), canActivate: [ AuthWithRedirectCanActivate('/login')], canActivateChild: [InRoleCanActivateChildFn], data: { roles: ['Empleados']}
+    path: 'libros', loadChildren: () => import('./libros/modulo.module').then(mod => mod.LibrosModule),
+    canActivate: [ AuthWithRedirectCanActivate('/login')],
+    canActivateChild: [ InRoleCanActivateChild('Empleados') ]
   },
 
   { matcher: svgFiles, component: GraficoSvgComponent },
