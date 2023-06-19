@@ -22,6 +22,7 @@ import { CommonComponentModule } from './common-component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContactosModule } from './contactos';
+import { LibrosModule } from './libros';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ContactosModule } from './contactos';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
-    AppRoutingModule, GraficoSvgComponent, ContactosModule,
+    AppRoutingModule, GraficoSvgComponent, ContactosModule, LibrosModule,
   ],
   providers: [
     LoggerService,

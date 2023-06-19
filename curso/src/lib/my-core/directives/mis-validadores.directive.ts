@@ -9,7 +9,7 @@ export function UppercaseValidator(): ValidatorFn {
 }
 @Directive({
   selector: '[uppercase][formControlName],[uppercase][formControl],[uppercase][ngModel]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: UppercaseValidatorDirective, multi: true }]
+  providers: [{ provide: NG_VALIDATORS, useExisting: forwardRef(() => UppercaseValidatorDirective), multi: true }]
 })
 export class UppercaseValidatorDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
@@ -31,7 +31,7 @@ export function NifValidator(): ValidatorFn {
 }
 @Directive({
   selector: '[nif][formControlName],[nif][formControl],[nif][ngModel]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: NifValidatorDirective, multi: true }]
+  providers: [{ provide: NG_VALIDATORS, useExisting: forwardRef(() => NifValidatorDirective), multi: true }]
 })
 export class NifValidatorDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
