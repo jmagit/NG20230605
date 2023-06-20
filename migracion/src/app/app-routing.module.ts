@@ -38,7 +38,7 @@ const routes: Routes = [
     canActivateChild: [ InRoleCanActivateChild('Empleados') ]
   },
   { path: 'ws', loadChildren: () => import('./web-socket/web-socket.module').then(mod => mod.WebSocketModule), },
-  { matcher: svgFiles, loadComponent: () => import('../lib/independientes/grafico-svg/grafico-svg.component'), },
+  { matcher: svgFiles, component: GraficoSvgComponent },
 
   { path: 'login', component: LoginFormComponent },
   { path: 'registro', component: RegisterUserComponent },
