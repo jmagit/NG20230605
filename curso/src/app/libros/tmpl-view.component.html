@@ -17,4 +17,6 @@
 </dl>
 <div>
   <input class="btn btn-secondary" type="button" value="Volver" (click)="VM.cancel()">
+  <a class="btn btn-success" [routerLink]="['/', 'libros', VM.Elemento.idLibro,'edit']"><i class="fas fa-pen"></i></a>
+
 </div>
