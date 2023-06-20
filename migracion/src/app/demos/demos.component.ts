@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
 import { NotificationService } from '../common-services';
+import { ElipsisPipe, CapitalizePipe } from '../../lib/my-core/pipes/cadenas.pipe';
+import { default } from '../../lib/independientes/grafico-svg/grafico-svg.component';
+import { SizerComponent } from '../../lib/my-core/components/my-sizer.component';
+import { CardComponent } from '../common-component/card.component';
+import { TypeValidatorDirective } from '../../lib/my-core/directives/mis-validadores.directive';
+import { NgFor, NgIf, NgClass, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe, TitleCasePipe, CurrencyPipe, DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CalculadoraComponent } from '../calculadora/calculadora.component';
 
 @Component({
-  selector: 'app-demos',
-  templateUrl: './demos.component.html',
-  styleUrls: ['./demos.component.css']
+    selector: 'app-demos',
+    templateUrl: './demos.component.html',
+    styleUrls: ['./demos.component.css'],
+    standalone: true,
+    imports: [CalculadoraComponent, FormsModule, NgFor, TypeValidatorDirective, CardComponent, SizerComponent, NgIf, NgClass, default, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe, TitleCasePipe, CurrencyPipe, DatePipe, ElipsisPipe, CapitalizePipe]
 })
 export class DemosComponent {
   private nombre: string = 'mundo'

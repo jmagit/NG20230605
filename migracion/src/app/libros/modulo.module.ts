@@ -26,23 +26,21 @@ export const DatosResolveFn: ResolveFn<any> =  (route, state) => {
 };
 
 @NgModule({
-  declarations: [
-    LIBROS_COMPONENTES,
-  ],
-  exports: [
-    LIBROS_COMPONENTES,
-    // LibrosComponent,s
-  ],
-  imports: [
-    CommonModule, FormsModule, RouterModule.forChild([
-      { path: '', component: LibrosComponent },
-      { path: 'add', component: LibrosComponent },
-      { path: ':id/edit', component: LibrosComponent },
-      { path: ':id', component: LibrosComponent, resolve: { elemento: DatosResolveFn } },
-      { path: ':id/:kk', component: LibrosComponent },
-    ]),
-    MyCoreModule, CommonServicesModule,
-    PaginatorModule, CommonComponentModule, MyCoreModule,
-  ]
+    exports: [
+        LIBROS_COMPONENTES,
+        // LibrosComponent,s
+    ],
+    imports: [
+        CommonModule, FormsModule, RouterModule.forChild([
+            { path: '', component: LibrosComponent },
+            { path: 'add', component: LibrosComponent },
+            { path: ':id/edit', component: LibrosComponent },
+            { path: ':id', component: LibrosComponent, resolve: { elemento: DatosResolveFn } },
+            { path: ':id/:kk', component: LibrosComponent },
+        ]),
+        MyCoreModule, CommonServicesModule,
+        PaginatorModule, CommonComponentModule, MyCoreModule,
+        LIBROS_COMPONENTES,
+    ]
 })
 export class LibrosModule { }

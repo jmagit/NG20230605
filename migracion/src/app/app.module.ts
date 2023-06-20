@@ -24,27 +24,25 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContactosModule } from './contactos';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DemosComponent,
-    // DashboardComponent,
-    CalculadoraComponent,
-    FormularioComponent,
-  ],
-  imports: [
-    BrowserModule, FormsModule, HttpClientModule,
-    MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
-    AppRoutingModule, GraficoSvgComponent, ContactosModule,
-  ],
-  providers: [
-    LoggerService,
-    // { provide: LoggerService, useClass: LoggerService},
-    { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
-    { provide: LOCALE_ID, useValue: 'es-ES' },
-    { provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { dateFormat: 'dd/MMM/yy' } },
-    { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule, FormsModule, HttpClientModule,
+        MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
+        AppRoutingModule, GraficoSvgComponent, ContactosModule,
+        DemosComponent,
+        // DashboardComponent,
+        CalculadoraComponent,
+        FormularioComponent,
+    ],
+    providers: [
+        LoggerService,
+        // { provide: LoggerService, useClass: LoggerService},
+        { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
+        { provide: LOCALE_ID, useValue: 'es-ES' },
+        { provide: DATE_PIPE_DEFAULT_OPTIONS, useValue: { dateFormat: 'dd/MMM/yy' } },
+        { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

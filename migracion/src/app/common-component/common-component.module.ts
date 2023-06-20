@@ -8,16 +8,14 @@ import { CardComponent } from './card.component';
 
 
 @NgModule({
-  declarations: [
-    ListButtonsComponent, FormButtonsComponent, ShowErrorsMessagesComponent,
-    CardComponent,
-  ],
-  exports: [
-    ListButtonsComponent, FormButtonsComponent, ShowErrorsMessagesComponent,
-    CardComponent,
-  ],
-  imports: [
-    CommonModule
-  ]
+    exports: [
+        ListButtonsComponent, FormButtonsComponent, ShowErrorsMessagesComponent,
+        CardComponent,
+    ],
+    imports: [
+        CommonModule,
+        ListButtonsComponent, FormButtonsComponent, ShowErrorsMessagesComponent,
+        CardComponent
+    ]
 })
 export class CommonComponentModule { }

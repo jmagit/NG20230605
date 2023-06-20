@@ -11,15 +11,13 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [
-    NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent,
-  ],
-  exports: [
-    NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent,
-  ],
-  imports: [
-    CommonModule, SecurityModule, RouterModule.forChild([]),
-  ]
+    exports: [
+        NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent,
+    ],
+    imports: [
+        CommonModule, SecurityModule, RouterModule.forChild([]),
+        NotificationComponent, NotificationModalComponent, HomeComponent, AjaxWaitComponent, PageNotFoundComponent, HeaderComponent,
+    ]
 })
 export class MainModule {
   constructor( @Optional() @SkipSelf() parentModule: MainModule) {

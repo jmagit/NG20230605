@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationService, NotificationType } from '../common-services';
 import { AUTH_REQUIRED } from '../security';
+import { ErrorMessagePipe } from '../../lib/my-core/pipes/cadenas.pipe';
+import { JsonPipe } from '@angular/common';
+import { TypeValidatorDirective, UppercaseValidatorDirective, NifValidatorDirective } from '../../lib/my-core/directives/mis-validadores.directive';
+import { FormsModule } from '@angular/forms';
 
 export abstract class RESTDAOService<T, K> {
   protected baseUrl = environment.apiURL;
@@ -35,9 +39,11 @@ export class PersonasDaoService extends RESTDAOService<any, number> {
 }
 
 @Component({
-  selector: 'app-formulario',
-  templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+    selector: 'app-formulario',
+    templateUrl: './formulario.component.html',
+    styleUrls: ['./formulario.component.css'],
+    standalone: true,
+    imports: [FormsModule, TypeValidatorDirective, UppercaseValidatorDirective, NifValidatorDirective, JsonPipe, ErrorMessagePipe]
 })
 export class FormularioComponent {
   elemento: any = {}

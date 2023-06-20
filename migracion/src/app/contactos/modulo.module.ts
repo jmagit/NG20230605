@@ -9,17 +9,15 @@ import {PaginatorModule} from 'primeng/paginator';
 import { CommonComponentModule } from '../common-component';
 
 @NgModule({
-  declarations: [
-    CONTACTOS_COMPONENTES,
-  ],
-  exports: [
-    CONTACTOS_COMPONENTES,
-    // ContactosComponent,
-  ],
-  imports: [
-    CommonModule, FormsModule, RouterModule.forChild([]),
-    MyCoreModule, CommonServicesModule,
-    PaginatorModule, CommonComponentModule, MyCoreModule,
-  ]
+    exports: [
+        CONTACTOS_COMPONENTES,
+        // ContactosComponent,
+    ],
+    imports: [
+        CommonModule, FormsModule, RouterModule.forChild([]),
+        MyCoreModule, CommonServicesModule,
+        PaginatorModule, CommonComponentModule, MyCoreModule,
+        CONTACTOS_COMPONENTES,
+    ]
 })
 export class ContactosModule { }

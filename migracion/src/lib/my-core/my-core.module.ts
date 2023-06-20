@@ -8,14 +8,12 @@ import { MIS_VALIDADORES } from './directives/mis-validadores.directive';
 
 
 @NgModule({
-  declarations: [
-    SizerComponent, PIPES_CADENAS, PIPES_NUMERICOS, MIS_VALIDADORES,
-  ],
-  exports: [
-    SizerComponent, PIPES_CADENAS, PIPES_NUMERICOS, MIS_VALIDADORES,
-  ],
-  imports: [
-    CommonModule
-  ]
+    exports: [
+        SizerComponent, PIPES_CADENAS, PIPES_NUMERICOS, MIS_VALIDADORES,
+    ],
+    imports: [
+        CommonModule,
+        SizerComponent, PIPES_CADENAS, PIPES_NUMERICOS, MIS_VALIDADORES
+    ]
 })
 export class MyCoreModule { }

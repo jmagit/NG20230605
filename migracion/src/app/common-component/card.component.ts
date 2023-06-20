@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-card',
-  template: `
+    selector: 'app-card',
+    template: `
     <div class="card">
         <div class="card-header">{{ header }}</div>
         <div class="card-body">
@@ -10,7 +10,8 @@ import { Component, Input } from '@angular/core';
           <div class="card-text"><ng-content></ng-content></div>
         </div>
     </div>
-  `
+  `,
+    standalone: true
 })
 
 export class CardComponent {
