@@ -112,9 +112,9 @@ export class LibrosViewModelService {
     this.elemento = {};
     this.idOriginal = null;
     // this.list();
-    this.load(this.page)
+    // this.load(this.page)
     // this.router.navigateByUrl(this.listURL);
-    // this.navigation.back()
+    this.navigation.back()
   }
   public send(): void {
     switch (this.modo) {
@@ -153,7 +153,7 @@ export class LibrosViewModelService {
   page = 0;
   totalPages = 0;
   totalRows = 0;
-  rowsPerPage = 8;
+  rowsPerPage = 10;
   load(page: number = -1) {
     if (page < 0) page = this.page
     this.dao.page(page, this.rowsPerPage).subscribe({
@@ -167,9 +167,8 @@ export class LibrosViewModelService {
       error: err => this.handleError(err)
     })
   }
-
-  imageErrorHandler(event: Event, item: any) {
-    (event.target as HTMLImageElement).src = item.sexo === 'H' ? '/assets/user-not-found-male.png' : '/assets/user-not-found-female.png'
- }
+  pageChange(page: number = 0) {
+    this.router.navigate([], { queryParams: { page }})
+  }
 
 }

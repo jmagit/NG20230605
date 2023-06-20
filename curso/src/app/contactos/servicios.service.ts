@@ -167,7 +167,9 @@ export class ContactosViewModelService {
       error: err => this.handleError(err)
     })
   }
-
+  pageChange(page: number = 0) {
+    this.router.navigate([], { queryParams: { page }})
+  }
   imageErrorHandler(event: Event, item: any) {
     (event.target as HTMLImageElement).src = item.sexo === 'H' ? '/assets/user-not-found-male.png' : '/assets/user-not-found-female.png'
  }

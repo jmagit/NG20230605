@@ -17,9 +17,9 @@ const routes: Routes = [
   { path: 'inicio', component: HomeComponent, title: 'Curso de Angular' },
   { path: 'demos', component: DemosComponent, title: 'Demos' },
   { path: 'chisme/de/hacer/numeros', component: CalculadoraComponent, title: 'Calculadora' },
-  { path: 'contactos', component: ContactosListComponent, canActivate: [ AuthWithRedirectCanActivate('/login')] },
-  { path: 'contactos/add', component: ContactosAddComponent },
-  { path: 'contactos/:id/edit', component: ContactosEditComponent },
+  { path: 'contactos', component: ContactosListComponent },
+  { path: 'contactos/add', component: ContactosAddComponent, canActivate: [ AuthWithRedirectCanActivate('/login')] },
+  { path: 'contactos/:id/edit', component: ContactosEditComponent, canActivate: [ AuthWithRedirectCanActivate('/login')] },
   { path: 'contactos/:id', component: ContactosViewComponent },
   { path: 'contactos/:id/:kk', component: ContactosViewComponent },
   { path: 'alysia/baxendale', redirectTo: '/contactos/43' },
@@ -37,7 +37,7 @@ const routes: Routes = [
     canActivate: [ AuthWithRedirectCanActivate('/login')],
     canActivateChild: [ InRoleCanActivateChild('Empleados') ]
   },
-
+  { path: 'ws', loadChildren: () => import('./web-socket/web-socket.module').then(mod => mod.WebSocketModule), },
   { matcher: svgFiles, component: GraficoSvgComponent },
 
   { path: 'login', component: LoginFormComponent },

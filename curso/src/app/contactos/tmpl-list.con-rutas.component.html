@@ -3,7 +3,7 @@
     <tr class="table-info">
       <th class="display-4">Lista de contactos</th>
       <th class="text-end">
-        <button class="btn btn-success" routerLink="add"><i class="fas fa-plus"></i> Añadir</button>
+        <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="fas fa-plus"></i> Añadir</button>
       </th>
     </tr>
   </thead>
@@ -37,4 +37,4 @@
   </tbody>
 </table>
 <p-paginator [first]="VM.rowsPerPage*VM.page" [rows]="VM.rowsPerPage" [totalRecords]="VM.totalRows"
-    [pageLinkSize]="5" (onPageChange)="VM.load($event.page)"></p-paginator>
+    [pageLinkSize]="5" (onPageChange)="VM.pageChange($event.page)"></p-paginator>

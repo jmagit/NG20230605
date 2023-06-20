@@ -9,10 +9,10 @@ import { LibrosViewModelService } from './servicios.service';
   templateUrl: './tmpl-anfitrion.component.html',
   styleUrls: ['./componente.component.css']
 })
-export class LibrosComponent implements OnInit, OnDestroy {
+export class LibrosComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() page = 0
   constructor(protected vm: LibrosViewModelService, protected router: Router, protected route: ActivatedRoute) { }
-  public get VM(): LibrosViewModelService { return this.vm; }
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     let id = this.route.snapshot.params['id'];
     if (id) {
       if (this.route.snapshot.url.slice(-1)[0]?.path === 'edit') {
@@ -23,8 +23,11 @@ export class LibrosComponent implements OnInit, OnDestroy {
     } else if (this.route.snapshot.url.slice(-1)[0]?.path === 'add') {
       this.vm.add();
     } else {
-      this.vm.load();
+      this.vm.load(this.page);
     }
+  }
+  public get VM(): LibrosViewModelService { return this.vm; }
+  ngOnInit(): void {
   }
   ngOnDestroy(): void { this.vm.clear(); }
 }
