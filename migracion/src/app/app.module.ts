@@ -11,14 +11,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AjaxWaitInterceptor, MainModule } from './main';
 import { AuthInterceptor, SecurityModule } from './security';
-import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
+import { ERROR_LEVEL, LoggerService } from 'src/lib/my-core';
 import { environment } from 'src/environments/environment';
 import { DemosComponent } from './demos/demos.component';
-import { CommonServicesModule } from './common-services';
+
 import GraficoSvgComponent from 'src/lib/independientes/grafico-svg/grafico-svg.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
-import { CommonComponentModule } from './common-component';
+
 import { FormularioComponent } from './formulario/formulario.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ContactosModule } from './contactos';
@@ -26,14 +26,14 @@ import { ContactosModule } from './contactos';
 @NgModule({
     declarations: [AppComponent],
     imports: [
-        BrowserModule, FormsModule, HttpClientModule,
-        MainModule, SecurityModule, MyCoreModule, CommonServicesModule, CommonComponentModule,
-        AppRoutingModule, GraficoSvgComponent, ContactosModule,
-        DemosComponent,
-        // DashboardComponent,
-        CalculadoraComponent,
-        FormularioComponent,
-    ],
+    BrowserModule, FormsModule, HttpClientModule,
+    MainModule, SecurityModule,
+    AppRoutingModule, GraficoSvgComponent, ContactosModule,
+    DemosComponent,
+    // DashboardComponent,
+    CalculadoraComponent,
+    FormularioComponent,
+],
     providers: [
         LoggerService,
         // { provide: LoggerService, useClass: LoggerService},
