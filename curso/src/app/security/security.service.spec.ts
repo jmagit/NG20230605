@@ -1,13 +1,13 @@
 import { HttpClient, HttpContext, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { Location } from '@angular/common';
 import { inject, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoggerService } from '@my/core';
 import { environment } from 'src/environments/environment';
-import { AuthInterceptor, AuthService, LoginService, AuthCanActivateFn, InRoleCanActivate, AUTH_REQUIRED } from './security.service';
+import { AuthInterceptor, AuthService, LoginService, AuthCanActivateFn, InRoleCanActivate, AUTH_REQUIRED, AuthWithRedirectCanActivate } from './security.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -359,10 +359,8 @@ describe('AuthInterceptor', () => {
 class TestHomeComponent { }
 @Component({ selector: 'app-test-component', template: `<p>Test Component</p>` })
 class TestComponent { }
-/*
-describe('AuthCanActivateFn', () => {
 
-  let service: AuthCanActivateFn
+describe('AuthCanActivateFn', () => {
   let auth: AuthService
   let router: Router
   let location: Location
@@ -377,20 +375,16 @@ describe('AuthCanActivateFn', () => {
             { path: '', pathMatch: 'full', component: TestHomeComponent },
             { path: 'login', component: TestComponent },
             { path: 'test', component: TestComponent, canActivate: [AuthCanActivateFn] },
-            { path: 'redirect', component: TestComponent, canActivate: [AuthCanActivateFn], data: { redirectTo: '/login' } },
+            { path: 'redirect', component: TestComponent, canActivate: [AuthWithRedirectCanActivate('/login')] },
           ]
         )
       ]
     });
-    service = TestBed.inject(AuthCanActivateFn);
     router = TestBed.inject(Router);
     auth = TestBed.inject(AuthService);
     location = TestBed.inject(Location)
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
   it('canActivate', async () => {
     auth.login('token', 'refresh', 'usuario', [])
     expect(router.routerState.snapshot.url).toEqual('');
@@ -417,7 +411,6 @@ describe('AuthCanActivateFn', () => {
 });
 
 describe('InRoleCanActivate', () => {
-  let service: InRoleCanActivate;
   let auth: AuthService
   let router: Router
 
@@ -429,20 +422,16 @@ describe('InRoleCanActivate', () => {
         RouterTestingModule.withRoutes(
           [
             { path: '', pathMatch: 'full', component: TestHomeComponent },
-            { path: 'test', component: TestComponent, canActivate: [InRoleCanActivate], data: { roles: ['Administradores', 'ADMIN'] } },
-            { path: 'bad', component: TestComponent, canActivate: [InRoleCanActivate] },
+            { path: 'test', component: TestComponent, canActivate: [InRoleCanActivate('Administradores', 'ADMIN')] },
+            { path: 'bad', component: TestComponent, canActivate: [InRoleCanActivate()] },
           ]
         )
       ]
     });
-    service = TestBed.inject(InRoleCanActivate);
     router = TestBed.inject(Router);
     auth = TestBed.inject(AuthService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
   it('canActivate', async () => {
     auth.login('token', 'refresh', 'usuario', ['Usuarios', 'Administradores'])
     expect(router.routerState.snapshot.url).toEqual('');
@@ -471,6 +460,5 @@ describe('InRoleCanActivate', () => {
     expect(navigate).toBeFalsy()
     expect(router.routerState.snapshot.url).toEqual('');
   });
-
 });
-*/
+
