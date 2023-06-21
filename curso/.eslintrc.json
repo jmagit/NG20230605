@@ -31,7 +31,7 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/no-inferrable-types": ["none"]
+        "@typescript-eslint/no-inferrable-types": ["off"]
       }
     },
     {

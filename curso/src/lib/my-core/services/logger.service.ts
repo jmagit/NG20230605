@@ -2,6 +2,9 @@ import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 
 export const ERROR_LEVEL = new InjectionToken<string>('ERROR_LEVEL');
 
+/**
+ * Servicio que envuelve a la consola
+ */
 @Injectable()
 export class LoggerService {
   private readonly nivel: number;
@@ -14,6 +17,10 @@ export class LoggerService {
     }
   }
 
+  /**
+   * Muestra un mensaje de error en la consola
+   * @param message Mensaje de error
+   */
   public error(message: string): void {
     if (this.nivel > 0) {
       console.error(message);
