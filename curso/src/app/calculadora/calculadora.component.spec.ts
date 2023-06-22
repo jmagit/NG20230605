@@ -265,7 +265,7 @@ describe('CalculadoraComponent', () => {
     expect(notify.add).toHaveBeenCalledWith('Ya está la coma', NotificationType.warn)
   });
 
-  xdescribe('Eventos de teclado', () => {
+  describe('Eventos de teclado', () => {
     it('teclado', () => {
       spyOn(console, 'log').and.stub()
       const pantalla: HTMLElement = fixture.debugElement.query(By.css('.Pantalla')).nativeElement;
