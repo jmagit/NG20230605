@@ -1,9 +1,9 @@
 import { HttpClient, HttpContext, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { inject, TestBed } from '@angular/core/testing';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoggerService } from '@my/core';
 import { environment } from 'src/environments/environment';

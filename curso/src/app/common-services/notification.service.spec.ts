@@ -3,6 +3,7 @@ import { LoggerService } from '@my/core';
 import { NotificationType } from '.';
 
 import { NotificationService } from './notification.service';
+import { firstValueFrom } from 'rxjs';
 
 describe('NotificationService', () => {
   const message = 'Notificación al usuario'
@@ -48,12 +49,10 @@ describe('NotificationService', () => {
       expect(log.error).toHaveBeenCalledWith(`NOTIFICATION: ${message}`)
     });
 
-    it('add message: warn', (done: DoneFn) => {
-      service.Notificacion.subscribe({
-        next: data => { expect(data.Message).toBe(message); done(); },
-        error: () => fail()
-      });
+    it('add message: warn', async () => {
+      const promesa = firstValueFrom(service.Notificacion)
       service.add(message, NotificationType.warn)
+      expect((await promesa).Message).toBe(message)
       expect(service.HayNotificaciones).toBeTruthy();
       expect(service.Listado.length).toBe(1);
       expect(service.Listado[0].Id).toBe(1);
