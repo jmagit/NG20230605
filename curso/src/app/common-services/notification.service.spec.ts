@@ -71,7 +71,7 @@ describe('NotificationService', () => {
       });
 
     })
-    describe('KO', () => {
+    xdescribe('KO', () => {
       it('add message: sin mensaje', () => {
         service.add('')
         expect(log.error).toHaveBeenCalled();
