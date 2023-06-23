@@ -1,0 +1,70 @@
+describe('My First Test', () => {
+  it('Visits the initial project page', () => {
+    cy.visit('/')
+    cy.contains('app is running!')
+  })
+  it('clicking "type" navigates to a new url', () => {
+    cy.visit('https://example.cypress.io')
+
+    cy.contains('type').click()
+    cy.url().should('include', '/commands/actions')
+    cy.get('.action-email')
+      .type('fake@email.com')
+      .should('have.value', 'fake@email.com')
+    cy.get('#password1')
+      .type('P@ssw0rd')
+      .should('have.value', 'P@ssw0rd')
+      .should('have.class', 'focus')
+      .prev().should('have.attr', 'style', 'color: orange;')
+  })
+  it('calculadora', () => {
+    cy.visit('/chisme/de/hacer/numeros')
+    cy.viewport('samsung-note9', 'landscape')
+    cy.wait(200)
+    cy.get('.Pantalla').as('pantalla')
+    '9876543210.2⌫⌫⌫±'.split('').forEach(item => {
+      cy.get(`[value="${item}"]`).click()
+    })
+    cy.get('.Pantalla').should('have.text','-987654321')
+    cy.get(`[value="C"]`).click()
+    cy.get('.Pantalla').should('have.text','0')
+    cy.get(`[value="1"]`).click()
+    cy.get(`[value="+"]`).click()
+    cy.get('.Resumen').should('have.text','1 +')
+    cy.get(`[value="2"]`).click()
+    cy.get(`[value="-"]`).click()
+    cy.get('.Resumen').should('have.text','3 -')
+    cy.get(`[value="1"]`).click()
+    cy.get(`[value="*"]`).click()
+    cy.get('.Resumen').should('have.text','2 *')
+    cy.get(`[value="3"]`).click()
+    cy.get(`[value="/"]`).click()
+    cy.get('.Resumen').should('have.text','6 /')
+    cy.get(`[value="0"]`).click()
+    cy.get(`[value="="]`).click()
+    cy.get('@pantalla').should('have.text','Infinity')
+    cy.get('.Resumen').should('have.text','')
+  })
+  it('calculadora', () => {
+    cy.visit('/chisme/de/hacer/numeros')
+    cy.get('.Pantalla').then(ele => {
+      expect(ele.text()).equal('0')
+    })
+    cy.get('.Resumen', {timeout: 10}).should('have.text','1')
+    cy.get('.Resumen', {timeout: 10}).should('deep','1')
+
+  })
+  it.only('contactos', () => {
+    const code = 404
+    cy.visit('/contactos')
+    // cy.intercept('GET', 'http://localhost:4321/api/contactos?_page=0&_rows=8&_sort=nombre', { statusCode: code }).as('getRest')
+    cy.intercept('GET', 'http://localhost:4321/api/contactos?_page=0&_rows=8&_sort=nombre', { fixture: 'contactos.json' }).as('getRest')
+    // cy.contains('contactos').click().should(() => {
+    // cy.wait('@getRest').its('response.statusCode').should('eq', code)
+    // })
+    cy.contains('contactos').click()
+    cy.wait('@getRest').its('response.statusCode').should('eq', 200)
+      // cy.get('.modal-footer > .btn').click()
+
+  })
+})
