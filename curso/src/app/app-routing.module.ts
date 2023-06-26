@@ -35,7 +35,8 @@ const routes: Routes = [
   {
     path: 'libros', loadChildren: () => import('./libros/modulo.module').then(mod => mod.LibrosModule),
     canActivate: [ AuthWithRedirectCanActivate('/login')],
-    canActivateChild: [ InRoleCanActivateChild('Empleados') ]
+    canActivateChild: [ AuthWithRedirectCanActivate('/login'), InRoleCanActivateChild('Empleados') ],
+    runGuardsAndResolvers: 'always'
   },
   { path: 'ws', loadChildren: () => import('./web-socket/web-socket.module').then(mod => mod.WebSocketModule), },
   { matcher: svgFiles, loadComponent: () => import('../lib/independientes/grafico-svg/grafico-svg.component'), },
@@ -50,7 +51,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true, onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
